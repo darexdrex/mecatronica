@@ -25,13 +25,13 @@ body{font-family:system-ui,sans-serif;background:#080b12;color:#e8edf5;min-heigh
  100%{background-position:30% 30%, 70% 10%, 30% 80%, 90% 60%}
 }
 
-.contenido{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:40px 20px;text-align:center}
+.contenido{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:40px 20px;text-align:center}
 h1{font-size:32px;margin-bottom:10px;background:linear-gradient(90deg,#ff4d9d,#4d9dff,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .subtitulo{color:#8b97ab;margin-bottom:40px;font-size:18px}
 
 .tarjeta{
  background:#171f2e88;border:1px solid #263347;
- border-radius:16px;padding:30px;margin-bottom:20px;
+ border-radius:16px;padding:30px;margin-bottom:30px;
  backdrop-filter:blur(8px);
 }
 .tarjeta h2{color:#4f8cff;margin-bottom:15px;font-size:20px}
@@ -54,6 +54,12 @@ h1{font-size:32px;margin-bottom:10px;background:linear-gradient(90deg,#ff4d9d,#4
  color:#34c38f;font-weight:600;
  margin-top:10px;
 }
+
+.aviso{
+ background:#1a2535;border:1px solid #2a3f5c;
+ border-radius:10px;padding:15px;margin:20px 0;
+ color:#94c5ff;font-size:14px;
+}
 </style>
 </head>
 <body>
@@ -64,12 +70,16 @@ h1{font-size:32px;margin-bottom:10px;background:linear-gradient(90deg,#ff4d9d,#4
  <h1>🚀 Bienvenido a la Comunidad de Mecatrónica</h1>
  <p class="subtitulo">Aquí aprenderás, crearás y crecerás juntos</p>
  
- <!-- TU MODELO 3D -->
+ <!-- ==============================================
+     AQUÍ VAN TUS MODELOS 3D — Pega todos los que tengas
+     ============================================== -->
+
+ <!-- MODELO 1 -->
  <div class="modelo3d">
   <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
   <model-viewer
    src="https://files.catbox.moe/smydfy.glb"
-   alt="Modelo 3D — Proyecto Mecatrónica"
+   alt="Modelo 1 — Tu primer modelo"
    auto-rotate
    camera-controls
    shadow-intensity="1"
@@ -77,6 +87,24 @@ h1{font-size:32px;margin-bottom:10px;background:linear-gradient(90deg,#ff4d9d,#4
    style="width:100%;height:100%"
   ></model-viewer>
  </div>
+ 
+ <!-- COPIA Y PEGA ESTE BLOQUE POR CADA MODELO ADICIONAL QUE TENGAS
+ <div class="modelo3d">
+  <model-viewer
+   src="ENLACE_DE_TU_MODELO_AQUI"
+   alt="Modelo 2 — Nombre del modelo"
+   auto-rotate
+   camera-controls
+   shadow-intensity="1"
+   exposure="1.2"
+   style="width:100%;height:100%"
+  ></model-viewer>
+ </div>
+ -->
+
+ <!-- ==============================================
+     FIN DE TUS MODELOS 3D
+     ============================================== -->
  
  <!-- TEMA 1: Introducción -->
  <div class="tarjeta">
@@ -105,9 +133,11 @@ encenderDispositivo();
  <div class="tarjeta">
   <h2>📋 Encuesta de conocimientos</h2>
   <p>Ayúdanos a conocerte mejor. Tus respuestas nos ayudarán a mejorar el contenido para ti y para todos.</p>
-  <p style="margin-top:15px;color:#8b97ab">Gracias por participar. Estás listo para empezar 🎉</p>
   
-  <!-- Aquí puedes pegar tu formulario de encuesta si lo tienes -->
+  <!-- AQUÍ PEGA EL RESTO DE TU CONTENIDO, TEXTURAS, MENSAJES, LO QUE TENGAS -->
+  <!-- Pega debajo de esta línea todo lo que tenías antes que faltaba -->
+  
+  <p style="margin-top:15px;color:#8b97ab">Gracias por participar. Estás listo para empezar 🎉</p>
  </div>
 
 </div>
