@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Aprende Programación y Mecatrónica</title>
+<title>Code SIMU — Aprende y Crea</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:system-ui,sans-serif;background:#080b12;color:#e8edf5;min-height:100vh}
@@ -54,12 +54,6 @@ h1{font-size:32px;margin-bottom:10px;background:linear-gradient(90deg,#ff4d9d,#4
  color:#34c38f;font-weight:600;
  margin-top:10px;
 }
-
-.aviso{
- background:#1a2535;border:1px solid #2a3f5c;
- border-radius:10px;padding:15px;margin:20px 0;
- color:#94c5ff;font-size:14px;
-}
 </style>
 </head>
 <body>
@@ -67,19 +61,23 @@ h1{font-size:32px;margin-bottom:10px;background:linear-gradient(90deg,#ff4d9d,#4
 <div id="fondoGrad"></div>
 <div class="contenido">
 
- <h1>🚀 Bienvenido a la Comunidad de Mecatrónica</h1>
- <p class="subtitulo">Aquí aprenderás, crearás y crecerás juntos</p>
+ <h1>🤖 Code SIMU — Bienvenido</h1>
+ <p class="subtitulo">Explora, aprende y crea con nosotros</p>
  
- <!-- ==============================================
-     AQUÍ VAN TUS MODELOS 3D — Pega todos los que tengas
-     ============================================== -->
+ <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
 
- <!-- MODELO 1 -->
+<!-- ==============================================
+     MODELO 1 — Introducción
+     ============================================== -->
+ <div class="tarjeta">
+  <h2>🔌 ¿Qué es la Mecatrónica?</h2>
+  <p>La mecatrónica une la mecánica, la electrónica y la programación para crear sistemas inteligentes. Todo lo que se mueve y responde tiene algo de mecatrónica dentro.</p>
+ </div>
+
  <div class="modelo3d">
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
   <model-viewer
    src="https://files.catbox.moe/smydfy.glb"
-   alt="Modelo 1 — Tu primer modelo"
+   alt="Modelo 1 — Estructura robótica"
    auto-rotate
    camera-controls
    shadow-intensity="1"
@@ -87,57 +85,85 @@ h1{font-size:32px;margin-bottom:10px;background:linear-gradient(90deg,#ff4d9d,#4
    style="width:100%;height:100%"
   ></model-viewer>
  </div>
- 
- <!-- COPIA Y PEGA ESTE BLOQUE POR CADA MODELO ADICIONAL QUE TENGAS
- <div class="modelo3d">
-  <model-viewer
-   src="ENLACE_DE_TU_MODELO_AQUI"
-   alt="Modelo 2 — Nombre del modelo"
-   auto-rotate
-   camera-controls
-   shadow-intensity="1"
-   exposure="1.2"
-   style="width:100%;height:100%"
-  ></model-viewer>
- </div>
- -->
 
- <!-- ==============================================
-     FIN DE TUS MODELOS 3D
-     ============================================== -->
- 
- <!-- TEMA 1: Introducción -->
  <div class="tarjeta">
-  <h2>💻 ¿Qué vas a aprender?</h2>
-  <p>La programación y la mecatrónica son el futuro. Aquí empezarás desde lo básico hasta crear proyectos que funcionen en la vida real.</p>
+  <h2>💻 Tu primer código</h2>
+  <p>La programación es el lenguaje que le dice a la máquina qué hacer. Empieza con algo sencillo:</p>
   <div class="codigo">
-// Tu primer código en control de sistemas
-function encenderDispositivo() {
-  console.log("✅ Sistema activado");
-  console.log("⚙️ Sensores verificados");
-  console.log("🤖 ¡Listo para aprender!");
+// Encender un LED
+void setup() {
+  pinMode(13, OUTPUT);
 }
 
-encenderDispositivo();
+void loop() {
+  digitalWrite(13, HIGH);  // Encender
+  delay(1000);             // Esperar 1 seg
+  digitalWrite(13, LOW);   // Apagar
+  delay(1000);             // Esperar 1 seg
+}
   </div>
  </div>
- 
- <!-- TEMA 2: Tu progreso -->
+
+<!-- ==============================================
+     MODELO 2 — Sensores
+     ============================================== -->
  <div class="tarjeta">
-  <h2>🎯 Tu progreso</h2>
-  <p>Completa tu perfil y responde la encuesta para personalizar tu ruta de aprendizaje. Cada paso te acerca más a dominar la tecnología.</p>
-  <p class="exito">✅ Verificación completada correctamente. ¡Bienvenido!</p>
+  <h2>📡 Sensores: Los ojos de la máquina</h2>
+  <p>Los sensores detectan el mundo: luz, distancia, temperatura, movimiento. Sin ellos, el robot no sabría qué pasa a su alrededor.</p>
  </div>
- 
- <!-- TU ENCUESTA / CONTENIDO -->
+
+ <div class="modelo3d">
+  <model-viewer
+   src="https://files.catbox.moe/smydfy.glb"
+   alt="Modelo 2 — Sistema con sensores"
+   auto-rotate
+   camera-controls
+   shadow-intensity="1"
+   exposure="1.2"
+   style="width:100%;height:100%"
+  ></model-viewer>
+ </div>
+
+ <div class="tarjeta">
+  <h2>🧠 Piensa como un programador</h2>
+  <p>Divide el problema en pasos pequeños. Así cualquier proyecto se vuelve posible.</p>
+  <div class="codigo">
+// Leer un sensor de distancia
+int distancia = leerSensor();
+
+if (distancia < 20) {
+  activarAlarma();  // ¡Algo está cerca!
+} else {
+  descansar();      // Todo tranquilo
+}
+  </div>
+ </div>
+
+<!-- ==============================================
+     MODELO 3 — Tu proyecto
+     ============================================== -->
+ <div class="tarjeta">
+  <h2>🚀 ¡Tú puedes crear esto!</h2>
+  <p>Empieza hoy. Cada código que escribes, cada pieza que armas, te acerca a construir tus propios inventos.</p>
+ </div>
+
+ <div class="modelo3d">
+  <model-viewer
+   src="https://files.catbox.moe/smydfy.glb"
+   alt="Modelo 3 — Proyecto completo"
+   auto-rotate
+   camera-controls
+   shadow-intensity="1"
+   exposure="1.2"
+   style="width:100%;height:100%"
+  ></model-viewer>
+ </div>
+
  <div class="tarjeta">
   <h2>📋 Encuesta de conocimientos</h2>
-  <p>Ayúdanos a conocerte mejor. Tus respuestas nos ayudarán a mejorar el contenido para ti y para todos.</p>
-  
-  <!-- AQUÍ PEGA EL RESTO DE TU CONTENIDO, TEXTURAS, MENSAJES, LO QUE TENGAS -->
-  <!-- Pega debajo de esta línea todo lo que tenías antes que faltaba -->
-  
-  <p style="margin-top:15px;color:#8b97ab">Gracias por participar. Estás listo para empezar 🎉</p>
+  <p>Ayúdanos a conocerte mejor para personalizar tu ruta de aprendizaje.</p>
+  <p class="exito">✅ Verificación completada. ¡Estás listo para empezar! 🎉</p>
+  <p style="margin-top:15px;color:#8b97ab">Gracias por participar en Code SIMU.</p>
  </div>
 
 </div>
