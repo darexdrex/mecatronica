@@ -1,503 +1,116 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Encuesta Mecatrónica</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aprende Programación y Mecatrónica</title>
 <style>
-/* Diseño: una sola columna angosta, como una hoja técnica. Las preguntas se separan con líneas, no con tarjetas. Azul para estructura, naranja de seguridad solo para el botón principal y el cierre. */
-:root {
-  --bg: #EEF1F5;
-  --surface: #FFFFFF;
-  --ink: #14202E;
-  --muted: #526379;
-  --line: #CAD3DE;
-  --blue: #1F4E8C;
-  --blue-soft: #E3ECF8;
-  --on-blue: #FFFFFF;
-  --accent: #C2410C;
-  --on-accent: #FFFFFF;
-  --good: #17713F;
-  --good-soft: #DDF1E6;
-  --bad: #A8281C;
-  --bad-soft: #FBE5E2;
-  --f-display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
-  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,sans-serif;background:#080b12;color:#e8edf5;min-height:100vh}
+
+/* Fondo animado */
+#fondoGrad{
+ position:fixed;inset:0;z-index:0;
+ background:
+  radial-gradient(circle at 15% 20%, #ff4d9d55, transparent 55%),
+  radial-gradient(circle at 85% 15%, #4d9dff55, transparent 55%),
+  radial-gradient(circle at 50% 85%, #34d39955, transparent 55%),
+  radial-gradient(circle at 85% 80%, #ffd34d44, transparent 55%),
+  #080b12;
+ background-size:160% 160%;
+ animation:movFondo 18s ease-in-out infinite alternate;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0D1624;
-    --surface: #15233A;
-    --ink: #E7EDF6;
-    --muted: #9DB0C8;
-    --line: #2B3C58;
-    --blue: #7FB0F5;
-    --blue-soft: #1C3254;
-    --on-blue: #0D1624;
-    --accent: #F4823F;
-    --on-accent: #0D1624;
-    --good: #5ED39B;
-    --good-soft: #123A2B;
-    --bad: #FF8F85;
-    --bad-soft: #431D1B;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0D1624;
-  --surface: #15233A;
-  --ink: #E7EDF6;
-  --muted: #9DB0C8;
-  --line: #2B3C58;
-  --blue: #7FB0F5;
-  --blue-soft: #1C3254;
-  --on-blue: #0D1624;
-  --accent: #F4823F;
-  --on-accent: #0D1624;
-  --good: #5ED39B;
-  --good-soft: #123A2B;
-  --bad: #FF8F85;
-  --bad-soft: #431D1B;
-  color-scheme: dark;
+@keyframes movFondo{
+ 0%{background-position:0% 0%, 100% 0%, 50% 100%, 100% 100%}
+ 100%{background-position:30% 30%, 70% 10%, 30% 80%, 90% 60%}
 }
 
-*, *::before, *::after { box-sizing: border-box; }
-body { background: var(--bg); color: var(--ink); font: 400 1rem/1.55 var(--f-body); }
-.wrap { max-width: 42rem; margin-inline: auto; padding-inline: 1rem; padding-block: 1.5rem 3.5rem; }
-h1, h2, h3, p, ul { margin: 0; }
-[hidden] { display: none !important; }
+.contenido{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:40px 20px;text-align:center}
+h1{font-size:32px;margin-bottom:10px;background:linear-gradient(90deg,#ff4d9d,#4d9dff,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitulo{color:#8b97ab;margin-bottom:40px;font-size:18px}
 
-.tag { font: 500 .75rem var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-.top h1 { font: 700 clamp(2.2rem, 9vw, 3.4rem)/1 var(--f-display); letter-spacing: .005em; text-wrap: balance; margin-top: .5rem; }
-.lead { color: var(--muted); max-width: 36rem; margin-top: .85rem; }
+.tarjeta{
+ background:#171f2e88;border:1px solid #263347;
+ border-radius:16px;padding:30px;margin-bottom:20px;
+ backdrop-filter:blur(8px);
+}
+.tarjeta h2{color:#4f8cff;margin-bottom:15px;font-size:20px}
+.tarjeta p{color:#c7d0de;line-height:1.7;margin-bottom:10px}
 
-.tabs { display: flex; gap: .5rem; margin-top: 1.25rem; flex-wrap: wrap; }
-.tab { min-height: 2.5rem; padding: .4rem .9rem; border: 1.5px solid var(--line); border-radius: 6px; background: transparent; color: var(--ink); font: 500 .8rem var(--f-mono); letter-spacing: .04em; cursor: pointer; }
-.tab[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); color: var(--on-blue); }
+.codigo{
+ background:#0c121c;border:1px solid #263347;
+ border-radius:8px;padding:15px;text-align:left;
+ font-family:monospace;color:#9fd8a0;
+ margin:15px 0;overflow-x:auto;
+}
 
-.prog { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); margin-top: 1.25rem; margin-inline: -1rem; padding: .65rem 1rem; border-bottom: 1px solid var(--line); }
-.prog .lbl { display: flex; justify-content: space-between; font: 500 .75rem var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-.bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin-top: .4rem; }
-.bar i { display: block; height: 100%; width: 0; background: var(--blue); transition: width .25s; }
+.modelo3d{
+ width:100%;height:400px;margin:30px 0;
+ border-radius:12px;overflow:hidden;
+ background:#00000033;
+}
 
-.q { padding-block: 1.6rem; border-top: 1px solid var(--line); }
-.q:first-child { border-top: 0; }
-.eyebrow { font: 500 .72rem var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-.q.bad .eyebrow { color: var(--bad); }
-.q h2 { font: 600 1.1rem/1.35 var(--f-body); margin-top: .35rem; text-wrap: balance; }
-.hint { color: var(--muted); font-size: .875rem; margin-top: .2rem; }
-.opts { display: grid; gap: .5rem; margin-top: .85rem; }
-.opt { display: flex; gap: .75rem; align-items: center; min-height: 2.75rem; padding: .6rem .85rem; background: var(--surface); border: 1.5px solid var(--line); border-radius: 6px; cursor: pointer; }
-.opt input { flex: none; width: 1.2rem; height: 1.2rem; margin: 0; accent-color: var(--blue); }
-.opt:has(input:checked) { border-color: var(--blue); background: var(--blue-soft); }
-.opt:has(input:focus-visible), .sc:has(input:focus-visible) { outline: 2px solid var(--blue); outline-offset: 2px; }
-.scale { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .5rem; margin-top: .85rem; }
-.sc { position: relative; display: grid; place-items: center; min-height: 3rem; border: 1.5px solid var(--line); border-radius: 6px; background: var(--surface); font: 600 1.1rem var(--f-mono); cursor: pointer; }
-.sc input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
-.sc:has(input:checked) { background: var(--blue); border-color: var(--blue); color: var(--on-blue); }
-.ends { display: flex; justify-content: space-between; gap: 1rem; margin-top: .45rem; color: var(--muted); font-size: .8rem; }
-textarea { display: block; width: 100%; min-height: 5.5rem; margin-top: .85rem; padding: .7rem .85rem; border: 1.5px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit; resize: vertical; }
-textarea:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
-.err { color: var(--bad); font-size: .875rem; font-weight: 500; margin-top: .6rem; }
-
-.submit { display: grid; gap: .75rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
-.btn { display: grid; place-items: center; min-height: 3rem; padding: .5rem 1.25rem; border: 0; border-radius: 6px; background: var(--accent); color: var(--on-accent); font: 600 1rem var(--f-body); text-decoration: none; text-align: center; cursor: pointer; }
-.btn:disabled { opacity: .6; cursor: wait; }
-.btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
-.btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
-.msg { color: var(--bad); font-weight: 500; }
-
-.status { padding: .85rem 1rem; border-radius: 6px; background: var(--good-soft); color: var(--good); font-weight: 500; }
-.status.info { background: var(--blue-soft); color: var(--ink); }
-.status p + p { margin-top: .35rem; }
-.after { display: grid; gap: .75rem; margin-top: 1.25rem; }
-.sec { margin-top: 2.25rem; }
-.sec > h2 { font: 700 1.7rem/1.05 var(--f-display); text-wrap: balance; }
-.sec > p { color: var(--muted); margin-top: .35rem; }
-.fb { padding-block: 1.1rem; border-top: 1px solid var(--line); margin-top: .75rem; }
-.fb h3 { font: 600 1rem/1.35 var(--f-body); margin-top: .5rem; }
-.fb p { margin-top: .4rem; }
-.fb .k { color: var(--muted); font-size: .875rem; }
-.pill { display: inline-block; padding: .2rem .5rem; border-radius: 4px; font: 600 .72rem var(--f-mono); letter-spacing: .06em; text-transform: uppercase; }
-.pill.ok { background: var(--good-soft); color: var(--good); }
-.pill.no { background: var(--bad-soft); color: var(--bad); }
-.disc { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; margin-top: 1rem; }
-.d { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: .85rem; }
-.d b { display: block; font: 600 .75rem var(--f-mono); letter-spacing: .08em; color: var(--blue); }
-.d p { margin-top: .35rem; font-size: .9rem; }
-.eq { grid-column: 1 / -1; background: var(--accent); color: var(--on-accent); border-radius: 6px; padding: .9rem 1rem; }
-.eq b { display: block; font: 700 1.6rem/1.05 var(--f-display); letter-spacing: .02em; }
-.eq span { font-size: .9rem; }
-.chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; padding: 0; list-style: none; }
-.chips li { padding: .35rem .8rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-size: .9rem; }
-.day { margin-top: 1rem; padding: 0; list-style: none; display: grid; gap: .6rem; }
-.day li { display: flex; gap: .75rem; }
-.day li::before { content: "—"; color: var(--blue); font-family: var(--f-mono); flex: none; }
-
-.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: .5rem; margin-top: 1.25rem; }
-.kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: .85rem; }
-.kpi b { display: block; font: 700 2.2rem/1 var(--f-display); color: var(--blue); }
-.kpi span { font-size: .85rem; color: var(--muted); }
-.res { padding-block: 1.4rem; border-top: 1px solid var(--line); margin-top: 1.25rem; }
-.res:first-of-type { margin-top: 1.5rem; }
-.res h3 { font: 600 1.05rem/1.35 var(--f-body); margin-top: .3rem; text-wrap: balance; }
-.avg { margin-top: .4rem; color: var(--muted); }
-.avg b { color: var(--ink); font-family: var(--f-mono); }
-.row { margin-top: .65rem; }
-.lab { display: flex; justify-content: space-between; gap: .75rem; font-size: .9rem; }
-.lab > span:first-child { min-width: 0; overflow-wrap: anywhere; }
-.num { flex: none; font-family: var(--f-mono); font-variant-numeric: tabular-nums; color: var(--muted); }
-.track { height: 8px; margin-top: .25rem; background: var(--line); border-radius: 4px; overflow: hidden; }
-.fill { height: 100%; background: var(--blue); }
-.fill.ok { background: var(--good); }
-.cm { margin-top: .5rem; padding: .7rem .85rem; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; overflow-wrap: anywhere; }
-.empty { margin-top: 1.5rem; padding: 1.25rem; border: 1.5px dashed var(--line); border-radius: 6px; }
-.empty h2 { font: 700 1.5rem/1.1 var(--f-display); }
-.empty p { margin-top: .4rem; color: var(--muted); }
-.note { margin-top: 1.25rem; font-size: .85rem; color: var(--muted); }
-
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+.exito{
+ color:#34c38f;font-weight:600;
+ margin-top:10px;
+}
 </style>
+</head>
+<body>
 
-<main class="wrap">
-  <header class="top">
-    <div class="tag">Encuesta · 2 minutos · Anónima</div>
-    <h1>¿Conoces la carrera de Mecatrónica?</h1>
-    <p class="lead" id="lead">Son 10 preguntas cortas. No pedimos nombre ni correo. Al final te contamos de qué trata la carrera y verás si acertaste en dos preguntas.</p>
-  </header>
+<div id="fondoGrad"></div>
+<div class="contenido">
 
-  <nav class="tabs" id="tabs" hidden aria-label="Vistas">
-    <button class="tab" id="t-form" type="button" aria-pressed="true">Responder</button>
-    <button class="tab" id="t-res" type="button" aria-pressed="false">Resultados (0)</button>
-  </nav>
+ <h1>🚀 Bienvenido a la Comunidad de Mecatrónica</h1>
+ <p class="subtitulo">Aquí aprenderás, crearás y crecerás juntos</p>
+ 
+ <!-- TU MODELO 3D -->
+ <div class="modelo3d">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
+  <model-viewer
+   src="https://files.catbox.moe/smydfy.glb"
+   alt="Modelo 3D — Proyecto Mecatrónica"
+   auto-rotate
+   camera-controls
+   shadow-intensity="1"
+   exposure="1.2"
+   style="width:100%;height:100%"
+  ></model-viewer>
+ </div>
+ 
+ <!-- TEMA 1: Introducción -->
+ <div class="tarjeta">
+  <h2>💻 ¿Qué vas a aprender?</h2>
+  <p>La programación y la mecatrónica son el futuro. Aquí empezarás desde lo básico hasta crear proyectos que funcionen en la vida real.</p>
+  <div class="codigo">
+// Tu primer código en control de sistemas
+function encenderDispositivo() {
+  console.log("✅ Sistema activado");
+  console.log("⚙️ Sensores verificados");
+  console.log("🤖 ¡Listo para aprender!");
+}
 
-  <section id="v-form">
-    <div class="prog" aria-live="polite">
-      <div class="lbl"><span id="plabel">0 de 9 respondidas</span><span>* obligatorias</span></div>
-      <div class="bar"><i id="pfill"></i></div>
-    </div>
-    <form id="form" novalidate>
-      <div id="qs"></div>
-      <div class="submit">
-        <p class="msg" id="summary" role="alert" hidden></p>
-        <button class="btn" id="send" type="submit">Enviar respuestas</button>
-      </div>
-    </form>
-  </section>
+encenderDispositivo();
+  </div>
+ </div>
+ 
+ <!-- TEMA 2: Tu progreso -->
+ <div class="tarjeta">
+  <h2>🎯 Tu progreso</h2>
+  <p>Completa tu perfil y responde la encuesta para personalizar tu ruta de aprendizaje. Cada paso te acerca más a dominar la tecnología.</p>
+  <p class="exito">✅ Verificación completada correctamente. ¡Bienvenido!</p>
+ </div>
+ 
+ <!-- TU ENCUESTA / CONTENIDO -->
+ <div class="tarjeta">
+  <h2>📋 Encuesta de conocimientos</h2>
+  <p>Ayúdanos a conocerte mejor. Tus respuestas nos ayudarán a mejorar el contenido para ti y para todos.</p>
+  <p style="margin-top:15px;color:#8b97ab">Gracias por participar. Estás listo para empezar 🎉</p>
+  
+  <!-- Aquí puedes pegar tu formulario de encuesta si lo tienes -->
+ </div>
 
-  <section id="v-thanks" hidden></section>
-  <section id="v-results" hidden><div id="res"></div></section>
-</main>
+</div>
 
-<script>
-(function () {
-  'use strict';
-
-  var Q = [
-    { id: 'q1', short: 'Ocupación', text: '¿A qué te dedicas?', type: 'single', req: true,
-      opts: [['colegio', 'Estudio en el colegio'], ['superior', 'Estudio en un instituto o universidad'], ['trabajo', 'Trabajo'], ['otro', 'Otra cosa']] },
-    { id: 'q2', short: '¿La conocía?', text: 'Antes de esta encuesta, ¿habías escuchado de la carrera de Mecatrónica?', type: 'single', req: true,
-      opts: [['bien', 'Sí, y sé de qué trata'], ['poco', 'Sí, pero no sé bien de qué trata'], ['no', 'No, es la primera vez que la escucho']] },
-    { id: 'q3', short: 'Dónde la escuchó', text: '¿Dónde la escuchaste?', hint: 'Puedes marcar varias.', type: 'multi', req: true, excl: 'nunca',
-      opts: [['familia', 'Familia o amigos'], ['redes', 'Redes sociales'], ['colegio', 'Colegio'], ['superior', 'Instituto o universidad'], ['trabajo', 'Trabajo'], ['internet', 'Internet o YouTube'], ['nunca', 'No la había escuchado']] },
-    { id: 'q4', short: 'Qué estudia un mecatrónico', text: '¿Qué crees que estudia un mecatrónico?', type: 'single', req: true, correct: 'mezcla',
-      why: 'La Mecatrónica junta mecánica, electrónica, control e informática para diseñar, instalar y mantener máquinas que funcionan solas.',
-      opts: [['autos', 'Solo mecánica de autos'], ['prog', 'Solo programación de computadoras'], ['mezcla', 'Una mezcla de mecánica, electrónica, control e informática'], ['nose', 'No sé']] },
-    { id: 'q5', short: 'Equipo con mecatrónica', text: '¿Cuál de estos equipos usa mecatrónica?', type: 'single', req: true, correct: 'todos',
-      why: 'Todos. Cada uno tiene partes que se mueven, sensores que miden y un programa que decide qué hacer. Está en las fábricas y también en la casa.',
-      opts: [['brazo', 'Un brazo robótico de una fábrica'], ['lavadora', 'Una lavadora con sensores y programas automáticos'], ['puerta', 'Una puerta que se abre sola'], ['todos', 'Todos los anteriores'], ['nose', 'No sé']] },
-    { id: 'q6', short: 'Dónde trabaja', text: '¿En qué lugares crees que puede trabajar un mecatrónico?', hint: 'Puedes marcar varias.', type: 'multi', req: true, excl: 'nose',
-      opts: [['mineria', 'Minería'], ['fabricas', 'Fábricas y plantas de producción'], ['alimentos', 'Alimentos y bebidas'], ['agro', 'Agroindustria'], ['autos', 'Talleres y empresas de autos'], ['energia', 'Energía'], ['salud', 'Equipos médicos'], ['nose', 'No sé']] },
-    { id: 'q7', short: 'Interés (1 a 5)', text: '¿Qué tan interesante te parece esta carrera?', type: 'scale', req: true, lo: 'Nada interesante', hi: 'Muy interesante' },
-    { id: 'q8', short: '¿La estudiaría?', text: '¿La estudiarías o se la recomendarías a alguien?', type: 'single', req: true,
-      opts: [['si', 'Sí'], ['tal', 'Tal vez'], ['mas', 'Necesito saber más'], ['no', 'No']] },
-    { id: 'q9', short: 'Quiere saber', text: '¿Qué te gustaría saber de la carrera?', hint: 'Puedes marcar varias.', type: 'multi', req: true,
-      opts: [['cursos', 'Qué cursos tiene'], ['duracion', 'Cuánto dura'], ['donde', 'Dónde se puede estudiar'], ['trabajo', 'En qué puedo trabajar'], ['dia', 'Qué hace un mecatrónico en su día a día'], ['sueldo', 'Cuánto se gana']] },
-    { id: 'q10', short: 'Comentario', text: '¿Quieres dejar un comentario o una duda?', type: 'text', req: false }
-  ];
-  var byId = {};
-  Q.forEach(function (q) { byId[q.id] = q; });
-  var REQ = Q.filter(function (q) { return q.req; }).length;
-
-  var $ = function (s) { return document.querySelector(s); };
-  function esc(s) {
-    return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
-  }
-  function labelOf(q, v) {
-    for (var i = 0; i < q.opts.length; i++) { if (q.opts[i][0] === v) { return q.opts[i][1]; } }
-    return '';
-  }
-  function use(name) {
-    try {
-      return window.claude && window.claude.use ? window.claude.use(name) : Promise.resolve(null);
-    } catch (e) { return Promise.resolve(null); }
-  }
-
-  /* ---------- Formulario ---------- */
-  function renderQ(q, i) {
-    var h = '<div class="q" role="group" aria-labelledby="' + q.id + '-t" data-q="' + q.id + '">';
-    h += '<div class="eyebrow">Pregunta ' + (i + 1) + ' de ' + Q.length + (q.req ? ' *' : ' · Opcional') + '</div>';
-    h += '<h2 id="' + q.id + '-t">' + esc(q.text) + '</h2>';
-    if (q.hint) { h += '<p class="hint">' + esc(q.hint) + '</p>'; }
-    if (q.type === 'single' || q.type === 'multi') {
-      var kind = q.type === 'single' ? 'radio' : 'checkbox';
-      h += '<div class="opts">' + q.opts.map(function (o) {
-        return '<label class="opt"><input type="' + kind + '" name="' + q.id + '" value="' + o[0] + '"><span>' + esc(o[1]) + '</span></label>';
-      }).join('') + '</div>';
-    } else if (q.type === 'scale') {
-      h += '<div class="scale">';
-      for (var n = 1; n <= 5; n++) {
-        h += '<label class="sc"><input type="radio" name="' + q.id + '" value="' + n + '" aria-label="' + n + ' de 5"><span>' + n + '</span></label>';
-      }
-      h += '</div><div class="ends"><span>' + esc(q.lo) + '</span><span>' + esc(q.hi) + '</span></div>';
-    } else {
-      h += '<textarea id="' + q.id + '" name="' + q.id + '" maxlength="300" rows="3" aria-labelledby="' + q.id + '-t" placeholder="Escribe aquí (opcional)"></textarea>';
-    }
-    h += '<p class="err" hidden>Falta responder esta pregunta.</p></div>';
-    return h;
-  }
-
-  var form = $('#form');
-  $('#qs').innerHTML = Q.map(renderQ).join('');
-
-  function collect() {
-    var fd = new FormData(form), a = {};
-    Q.forEach(function (q) {
-      if (q.type === 'multi') { a[q.id] = fd.getAll(q.id); }
-      else if (q.type === 'text') { a[q.id] = String(fd.get(q.id) || '').trim(); }
-      else if (q.type === 'scale') { var v = fd.get(q.id); a[q.id] = v ? Number(v) : null; }
-      else { a[q.id] = fd.get(q.id) || null; }
-    });
-    return a;
-  }
-  function isDone(q, v) {
-    if (!q.req) { return true; }
-    return q.type === 'multi' ? v.length > 0 : (v !== null && v !== '');
-  }
-  function setErr(id, on) {
-    var box = document.querySelector('.q[data-q="' + id + '"]');
-    box.classList.toggle('bad', on);
-    box.querySelector('.err').hidden = !on;
-  }
-  function updateProgress() {
-    var a = collect();
-    var done = Q.filter(function (q) { return q.req && isDone(q, a[q.id]); }).length;
-    $('#plabel').textContent = done + ' de ' + REQ + ' respondidas';
-    $('#pfill').style.width = Math.round(100 * done / REQ) + '%';
-  }
-
-  form.addEventListener('change', function (e) {
-    var t = e.target;
-    var q = byId[t.name];
-    if (q && t.type === 'checkbox' && q.excl) {
-      form.querySelectorAll('input[name="' + q.id + '"]').forEach(function (b) {
-        if (b === t) { return; }
-        if (t.checked && t.value === q.excl) { b.checked = false; }
-        else if (t.checked && b.value === q.excl) { b.checked = false; }
-      });
-    }
-    if (q) { setErr(q.id, false); }
-    updateProgress();
-  });
-
-  /* ---------- Envío ---------- */
-  var submitted = false;
-  var sendBtn = $('#send');
-
-  function withTimeout(p, ms) {
-    return Promise.race([p, new Promise(function (_, rej) { setTimeout(function () { rej(new Error('timeout')); }, ms); })]);
-  }
-
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    var a = collect();
-    var missing = Q.filter(function (q) { return !isDone(q, a[q.id]); });
-    Q.forEach(function (q) { setErr(q.id, missing.indexOf(q) > -1); });
-    var sum = $('#summary');
-    if (missing.length) {
-      sum.textContent = missing.length === 1 ? 'Falta 1 pregunta por responder.' : 'Faltan ' + missing.length + ' preguntas por responder.';
-      sum.hidden = false;
-      var first = document.querySelector('.q[data-q="' + missing[0].id + '"]');
-      var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      first.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'center' });
-      return;
-    }
-    sum.hidden = true;
-    sendBtn.disabled = true;
-    sendBtn.textContent = 'Enviando…';
-    var saved = false;
-    try {
-      var db = await use('db');
-      if (db) {
-        await withTimeout(db.collection('respuestas').add({ t: new Date().toISOString(), a: a }), 8000);
-        saved = true;
-      }
-    } catch (err) { saved = false; }
-    sendBtn.disabled = false;
-    sendBtn.textContent = 'Enviar respuestas';
-    submitted = true;
-    renderThanks(a, saved);
-    showView('thanks');
-  });
-
-  function waText(a) {
-    var L = ['Mis respuestas de la encuesta de Mecatrónica:'];
-    Q.forEach(function (q, i) {
-      var v = a[q.id], t = '';
-      if (q.type === 'multi') { t = v.map(function (x) { return labelOf(q, x); }).join(', '); }
-      else if (q.type === 'scale') { t = v + ' de 5'; }
-      else if (q.type === 'text') { t = v; }
-      else { t = labelOf(q, v); }
-      if (t) { L.push((i + 1) + '. ' + q.short + ': ' + t); }
-    });
-    return L.join('\n');
-  }
-
-  function feedback(q, a) {
-    var mine = a[q.id], ok = mine === q.correct;
-    return '<div class="fb"><span class="pill ' + (ok ? 'ok' : 'no') + '">' + (ok ? 'Acertaste' : 'No acertaste') + '</span>' +
-      '<h3>' + esc(q.text) + '</h3>' +
-      '<p class="k">Tu respuesta: ' + esc(labelOf(q, mine)) + '</p>' +
-      (ok ? '' : '<p class="k">Respuesta correcta: ' + esc(labelOf(q, q.correct)) + '</p>') +
-      '<p>' + esc(q.why) + '</p></div>';
-  }
-
-  function renderThanks(a, saved) {
-    var h = '';
-    if (saved) {
-      h += '<div class="status" style="margin-top:1.25rem"><p>Tus respuestas se enviaron. Gracias por participar.</p></div>';
-    } else {
-      h += '<div class="status info" style="margin-top:1.25rem"><p><b>Tus respuestas no se pudieron guardar en esta página.</b></p>' +
-        '<p>Puedes enviarlas por WhatsApp a quien te compartió la encuesta.</p></div>' +
-        '<div class="after"><a class="btn" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodeURIComponent(waText(a)) + '">Enviar mis respuestas por WhatsApp</a></div>';
-    }
-    h += '<div class="sec"><h2>¿Acertaste?</h2>' + feedback(byId.q4, a) + feedback(byId.q5, a) + '</div>';
-    h += '<div class="sec"><h2>Mecatrónica en 4 áreas</h2><p>Un mecatrónico entiende cómo se unen estas cuatro partes.</p>' +
-      '<div class="disc">' +
-      '<div class="d"><b>MECÁNICA</b><p>Motores, engranajes y estructuras que se mueven.</p></div>' +
-      '<div class="d"><b>ELECTRÓNICA</b><p>Sensores, circuitos y tableros eléctricos.</p></div>' +
-      '<div class="d"><b>CONTROL</b><p>PLC, robots y sistemas que trabajan solos.</p></div>' +
-      '<div class="d"><b>INFORMÁTICA</b><p>Programación, redes y datos de la planta.</p></div>' +
-      '<div class="eq"><b>= MECATRÓNICA</b><span>Máquinas que sienten, deciden y se mueven.</span></div></div></div>';
-    h += '<div class="sec"><h2>¿Dónde trabaja un mecatrónico?</h2><ul class="chips">' +
-      ['Minería', 'Fábricas', 'Alimentos y bebidas', 'Agroindustria', 'Automotriz', 'Energía', 'Equipos médicos', 'Almacenes y logística', 'Robótica'].map(function (c) { return '<li>' + c + '</li>'; }).join('') +
-      '</ul></div>';
-    h += '<div class="sec"><h2>Un día de trabajo</h2><ul class="day">' +
-      '<li>Instalar y programar máquinas automáticas.</li>' +
-      '<li>Revisar sensores, motores y tableros cuando algo falla.</li>' +
-      '<li>Hacer mantenimiento para que la planta no se detenga.</li>' +
-      '<li>Mejorar procesos con robots, PLC y sistemas de control.</li></ul></div>';
-    h += '<div class="sec"><p>¿Quedaste con ganas de saber más? Pregúntale a quien te compartió esta encuesta.</p></div>';
-    h += '<div class="after" style="margin-top:1.5rem"><button class="btn ghost" type="button" id="again">Responder otra vez</button></div>';
-    $('#v-thanks').innerHTML = h;
-    $('#again').addEventListener('click', function () {
-      form.reset();
-      Q.forEach(function (q) { setErr(q.id, false); });
-      updateProgress();
-      submitted = false;
-      showView('form');
-    });
-  }
-
-  /* ---------- Vistas ---------- */
-  function showView(n) {
-    $('#v-form').hidden = n !== 'form';
-    $('#v-thanks').hidden = n !== 'thanks';
-    $('#v-results').hidden = n !== 'results';
-    $('#lead').hidden = n !== 'form';
-    $('#t-form').setAttribute('aria-pressed', String(n !== 'results'));
-    $('#t-res').setAttribute('aria-pressed', String(n === 'results'));
-    window.scrollTo(0, 0);
-  }
-  $('#t-form').addEventListener('click', function () { showView(submitted ? 'thanks' : 'form'); });
-  $('#t-res').addEventListener('click', function () { showView('results'); });
-
-  /* ---------- Resultados (solo la persona dueña de la página) ---------- */
-  var rows = [];
-  var resNote = 'Aquí solo aparecen las respuestas que se guardaron en la página. Las que lleguen por WhatsApp se leen en el chat.';
-
-  function pct(c, n) { return n ? Math.round(100 * c / n) : 0; }
-  function cnt(id, v) { return rows.filter(function (r) { return r.a && r.a[id] === v; }).length; }
-  function bar(l, c, n, ok) {
-    var p = pct(c, n);
-    return '<div class="row"><div class="lab"><span>' + esc(l) + '</span><span class="num">' + c + ' · ' + p + '%</span></div>' +
-      '<div class="track"><div class="fill' + (ok ? ' ok' : '') + '" style="width:' + p + '%"></div></div></div>';
-  }
-  function kpi(big, small) { return '<div class="kpi"><b>' + big + '</b><span>' + esc(small) + '</span></div>'; }
-
-  function renderResults() {
-    var n = rows.length, box = $('#res'), h = '';
-    $('#t-res').textContent = 'Resultados (' + n + ')';
-    if (!n) {
-      box.innerHTML = '<div class="empty"><h2>Aún no hay respuestas guardadas</h2><p>Cuando alguien envíe la encuesta, los resultados aparecen aquí.</p></div><p class="note">' + esc(resNote) + '</p>';
-      return;
-    }
-    h += '<div class="kpis">' +
-      kpi(pct(cnt('q2', 'bien') + cnt('q2', 'poco'), n) + '%', 'La habían escuchado') +
-      kpi(pct(cnt('q4', 'mezcla'), n) + '%', 'Acertaron qué estudia') +
-      kpi(pct(cnt('q5', 'todos'), n) + '%', 'Acertaron el equipo') + '</div>';
-    Q.forEach(function (q, i) {
-      h += '<div class="res"><div class="eyebrow">Pregunta ' + (i + 1) + '</div><h3>' + esc(q.text) + '</h3>';
-      if (q.type === 'text') {
-        h += '<div id="cm"></div>';
-      } else if (q.type === 'scale') {
-        var c = [0, 0, 0, 0, 0], sum = 0, k = 0;
-        rows.forEach(function (r) {
-          var v = r.a ? Number(r.a[q.id]) : 0;
-          if (v >= 1 && v <= 5) { c[v - 1]++; sum += v; k++; }
-        });
-        h += '<p class="avg">Promedio <b>' + (k ? (sum / k).toLocaleString('es-PE', { maximumFractionDigits: 1 }) : '–') + '</b> de 5</p>';
-        for (var j = 0; j < 5; j++) { h += bar(String(j + 1), c[j], n, false); }
-      } else {
-        var counts = Object.create(null);
-        rows.forEach(function (r) {
-          var v = r.a ? r.a[q.id] : null;
-          (Array.isArray(v) ? v : [v]).forEach(function (x) { if (x != null) { counts[x] = (counts[x] || 0) + 1; } });
-        });
-        q.opts.forEach(function (o) { h += bar(o[1], counts[o[0]] || 0, n, q.correct === o[0]); });
-      }
-      h += '</div>';
-    });
-    h += '<p class="note">' + esc(resNote) + '</p>';
-    box.innerHTML = h;
-    var cm = $('#cm');
-    rows.filter(function (r) { return r.a && typeof r.a.q10 === 'string' && r.a.q10.trim(); }).slice(0, 100).forEach(function (r) {
-      var d = document.createElement('div');
-      d.className = 'cm';
-      d.textContent = r.a.q10;
-      cm.appendChild(d);
-    });
-    if (!cm.firstChild) {
-      var p = document.createElement('p');
-      p.className = 'avg';
-      p.textContent = 'Sin comentarios todavía.';
-      cm.appendChild(p);
-    }
-  }
-
-  async function initOwner() {
-    try {
-      var user = await use('user');
-      if (!user) { return; }
-      var owner = await user.isOwner();
-      if (!owner) { return; }
-      $('#tabs').hidden = false;
-      var db = await use('db');
-      if (!db) { renderResults(); return; }
-      db.collection('respuestas').orderBy('t', 'desc').limit(1000).onSnapshot(function (s) {
-        rows = s.docs.map(function (d) { return d.data() || {}; });
-        renderResults();
-      }, function () {
-        resNote = 'No se pudieron leer las respuestas guardadas. Recarga la página.';
-        renderResults();
-      });
-    } catch (e) { /* la encuesta funciona igual sin esto */ }
-  }
-
-  updateProgress();
-  renderResults();
-  initOwner();
-})();
-</script>
-
-</body></html>
+</body>
+</html>
